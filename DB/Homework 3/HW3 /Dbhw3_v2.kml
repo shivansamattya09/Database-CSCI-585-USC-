@@ -1,0 +1,164 @@
+<kml xmlns="http://earth.google.com/kml/2.0">
+    <Document>
+        <Style id="z1">
+            <IconStyle>
+                <Icon>
+                    <href>http://www.google.com/intl/en_us/mapfiles/ms/micons/blue-dot.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+        <Folder>
+            <name>Cafe</name>
+            <Placemark>
+                <name>Ronaldtutorcafe</name>
+                <styleUrl>#z1</styleUrl>
+                <Point>
+                    <coordinates>-118.2899708811798,34.020116385838904</coordinates>
+                </Point>
+            </Placemark>
+            <Placemark>
+                <name>Anneberg Cafe</name>
+                <styleUrl>#z1</styleUrl>
+                <Point>
+                    <coordinates>-118.28725738199998,34.020928184000006</coordinates>
+                </Point>
+            </Placemark>
+            <Placemark>
+                <name>Ronald tutor center cafe</name>
+                <styleUrl>#z1</styleUrl>
+                <Point>
+                    <coordinates>-118.28636789188016,34.02026037074008</coordinates>
+                </Point>
+            </Placemark>
+        </Folder>
+        <Folder>
+            <name>Department Building</name>  
+            <Placemark>
+                <name>EEB Building</name>
+                <styleUrl>#z1</styleUrl>
+                <Point>
+                    <coordinates>-118.29005722262738,34.01980801982004</coordinates>
+                </Point>
+            </Placemark>
+            <Placemark>
+                <name>School of architecture cayle garner roskhi school of art and design</name>
+                <styleUrl>#z1</styleUrl>
+                <Point>
+                    <coordinates>-118.28734263265831,34.01969994150792</coordinates>
+                </Point>
+            </Placemark>
+            <Placemark>
+                <name>Sol price school of public policy</name>
+                <styleUrl>#z1</styleUrl>
+                <Point>
+                    <coordinates>-118.28338993794371,34.019715301188775</coordinates>
+                </Point>
+            </Placemark>
+        </Folder>
+        <Folder>
+            <name>Libraries</name>
+            <Placemark>
+                <name>Science Library</name>
+                <styleUrl>#z1</styleUrl>
+                <Point>
+                    <coordinates>-118.28879652663844,34.01963975919474</coordinates>
+                </Point>
+            </Placemark>
+            <Placemark>
+                <name>Edward L Doheny Jr memorial library</name>
+                <styleUrl>#z1</styleUrl>
+                <Point>
+                    <coordinates>-118.28404979183208,34.02032468200775</coordinates>
+                </Point>
+            </Placemark>
+            <Placemark>
+                <name>Leavy library</name>
+                <styleUrl>#z1</styleUrl>
+                <Point>
+                    <coordinates>-118.28314317633854,34.02174728419189</coordinates>
+                </Point>
+            </Placemark>
+        </Folder>
+        <Folder>
+            <name>Waterwork</name>
+            <Placemark>
+                <name>water park near bovard, trojan statue, alumni park</name>
+                <styleUrl>#z1</styleUrl>
+                <Point>
+                    <coordinates>-118.28526920182287,34.02029495070766</coordinates>
+                </Point>
+            </Placemark>
+            <Placemark>
+                <name>Premtiss memorial fountain</name>
+                <styleUrl>#z1</styleUrl>
+                <Point>
+                    <coordinates>-118.28448231048864,34.02078399465811</coordinates>
+                </Point>
+            </Placemark>
+            <Placemark>
+                <name>the carolyn craig franklin library garden courtyard and fountain</name>
+                <styleUrl>#z1</styleUrl>
+                <Point>
+                    <coordinates>-118.2832742206458,34.02060274320691</coordinates>
+                </Point>
+            </Placemark>
+        </Folder>
+        <Placemark>
+            <name>Home</name>
+            <styleUrl>#z1</styleUrl>
+            <Point>
+                <coordinates>-118.29003452369697 34.034617978682725</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>ConvexHullall</name>
+            <Style>
+                <LineStyle>
+                    <color>ffff7d53</color>
+                </LineStyle>
+                <PolyStyle>
+                    <color>80fe4d28</color>
+                </PolyStyle>
+            </Style>
+            <Polygon>
+                <outerBoundaryIs>
+                    <LinearRing>
+                        <coordinates>-118.28879652663844,34.01963975919474 -118.29005722262738,34.01980801982004 -118.29003452369697,34.034617978682725 -118.28314317633854,34.021747284191896 -118.28314317633854,34.02174728419189 -118.2832742206458,34.02060274320691 -118.28338993794371,34.019715301188775 -118.28879652663844,34.01963975919474</coordinates>
+                    </LinearRing>
+                </outerBoundaryIs>
+            </Polygon> 
+        </Placemark>
+        <Placemark>
+            <name>Neighbour1</name>
+            <description>Neighbour1</description>
+            <Style><LineStyle><color>ff00ff00</color><width>1</width></LineStyle></Style>
+            <LineString>
+                <coordinates>-118.29003452369697,34.034617978682725 -118.28725738199998,34.020928184000006</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark>
+            <name>Neighbour2</name>
+            <description>Neighbour2</description>
+            <Style><LineStyle><color>ff00ff00</color><width>1</width></LineStyle></Style>
+            <LineString>
+                <coordinates>-118.29003452369697,34.034617978682725 -118.2899708811798,34.020116385838904</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark>
+            <name>Neighbour3</name>
+            <description>Neighbour3</description>
+            <Style><LineStyle><color>ff00ff00</color><width>1</width></LineStyle></Style>
+            <LineString>
+                <coordinates>-118.29003452369697,34.034617978682725 -118.28879652663844,34.01963975919474</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark>
+            <name>Neighbour4</name>
+            <description>Neighbour4</description>
+            <Style><LineStyle><color>ff00ff00</color><width>1</width></LineStyle></Style>
+            <LineString>
+                <coordinates>-118.29003452369697,34.034617978682725 -118.29005722262738,34.01980801982004</coordinates>
+            </LineString>
+        </Placemark>
+    </Document>
+</kml>

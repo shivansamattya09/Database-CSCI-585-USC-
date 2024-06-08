@@ -1,0 +1,120 @@
+﻿For the given assignment, I have used ORACLE SQL LIVE-https://livesql.oracle.com/;
+Used all the commands that where covered int lectures 
+For question 1
+Overall, the provided code sets up a database schema to track employees, their meetings, health symptoms, COVID-19 test results, and more, emphasizing monitoring and managing a potential outbreak in a workplace.
+Certainly! Here's a brief overview of each table and the SQL commands present in the provided code:
+* Employee Table:
+   * This table stores information about employees.
+   * Attributes: ID(Primary key), name, office_number, age, floor_number, phone_number, email_address, address.
+   * SQL Commands: CREATE TABLE defines the table structure and INSERT INTO is used to add data.
+   Number of employee is 15
+* Meeting Table:
+   * Records meetings that employees attend.
+   * Attributes: meeting_ID(Primary key), employee_ID (foreign key), room_number, floor_number, meeting_start_time.
+   * SQL Commands: CREATE TABLE for table definition, INSERT INTO to populate.
+   meeting room no is from 301-312
+* Notification Table:
+   * Stores notifications sent to employees.
+   * Attributes: notification_ID(Primary key), employee_ID (foreign key), notification_date, notification_type (either 'mandatory' or 'optional').
+   * SQL Commands: CREATE TABLE and INSERT INTO.
+   dates lies in between 2023-10-01 to 2023-10-15
+* Symptom Table:
+   * Records symptoms reported by employees.
+   * Attributes: row_ID(Primary key), employee_ID (foreign key), date_reported, symptom_ID (ranges from 0 to 5).
+   * SQL Commands: CREATE TABLE and INSERT INTO.
+   dates lies in between 2023-10-01 to 2023-10-08
+* Scan Table:
+   * Records temperature scans of employees.
+   * Attributes: scan_ID(Primary key), scan_date, scan_time, employee_ID (foreign key), temperature.
+   * SQL Commands: CREATE TABLE and INSERT INTO.
+   dates lies in between 2023-10-01 to 2023-10-08
+* Test Table:
+   * Stores COVID-19 test results of employees.
+   * Attributes: test_ID(Primary key), location ('company', 'hospital', or 'clinic'), test_date, test_time, employee_ID (foreign key), test_result ('positive' or 'negative').
+   * SQL Commands: CREATE TABLE and INSERT INTO.
+   dates lies in between 2023-10-01 to 2023-10-08
+* Case Table:
+   * Records COVID-19 cases among employees.
+   * Attributes: case_ID(Primary key), employee_ID (foreign key), date, resolution ('back to work', 'left the company', or 'deceased').
+   * The table name "Case" is in double quotes because "CASE" is a reserved word in SQL.
+   * SQL Commands: CREATE TABLE and INSERT INTO.
+   dates lies in between 2023-10-01 to 2023-10-15
+* HealthStatus Table:
+   * Stores the health status of employees on a particular date.
+   * Attributes: row_ID(Primary key), employee_ID (foreign key), date, status ('sick', 'hospitalized', or 'well').
+   * SQL Commands: CREATE TABLE and INSERT INTO.
+   dates lies in between 2023-10-01 to 2023-10-15
+For each table:
+* CREATE TABLE defines the table's structure, specifying its columns, data types, and constraints.
+* INSERT INTO adds rows of data to the table.
+Furthermore, throughout the code:
+* The REFERENCES clause in CREATE TABLE commands sets up foreign key relationships between tables.
+* CHECK constraints are used to ensure data integrity by enforcing that inserted/updated values meet specific conditions.
+* TO_DATE function is used to specify date values.
+* The select * from TableName command retrieves all rows from the specified table, primarily for verification.
+For question 2
+* SELECT symptom_ID, COUNT(*) as total_reports: This selects the symptom_ID and counts the number of times each symptom_ID appears in the Symptom table. The count is given an alias total_reports for easier reference.
+* FROM Symptom: Specifies that the data should be fetched from the Symptom table.
+* GROUP BY symptom_ID: This groups the selected rows based on unique values of symptom_ID.
+* ORDER BY total_reports DESC: This orders the resulting grouped rows based on the count of reports (total_reports) in descending order, meaning the symptom with the highest number of reports will be at the top.
+* FETCH FIRST 1 ROWS ONLY: This ensures that only the top row (i.e., the symptom with the most reports) is fetched from the result set.
+For question 3
+This SQL query identifies which floor number in a company has the highest number of sick employees. Here's a breakdown of the query:
+* SELECT floor_number, COUNT(*) as count: This selects the floor_number from the Employee table and counts the number of sick employees associated with that floor. The count is given an alias count.
+* FROM Employee e: Fetches data from the Employee table and assigns it the alias e for easier reference later in the query.
+* JOIN HealthStatus hs ON e.ID = hs.employee_ID: This is an inner join operation with the HealthStatus table (aliased as hs). It connects rows from the Employee table with rows from the HealthStatus table based on the condition that the employee ID matches in both tables.
+* WHERE hs.status = 'sick': Filters the results to only include employees who are marked as 'sick' in the HealthStatus table.
+* GROUP BY floor_number: Groups the results based on unique floor numbers, which allows for the counting operation in the next step.
+* ORDER BY count DESC: Orders the grouped results by the count of sick employees in descending order, so the floor with the most sick employees will be at the top.
+* FETCH FIRST 1 ROWS ONLY: Limits the result set to only the top row, which, after the previous steps, will represent the floor with the highest number of sick employees.
+For question 4
+* Number of Scans within a Date Range:
+   * SELECT COUNT(*) AS "Number of Scans": Counts the number of rows (representing scans) within the specified date range.
+   * FROM Scan: Fetches data from the Scan table.
+   * WHERE scan_date BETWEEN ...: Filters the scans that occurred between October 1, 2023, and October 7, 2023.
+* Number of Tests within a Date Range:
+   * SELECT COUNT(*) AS "Number of Tests": Counts the number of rows (representing tests) within the specified date range.
+   * FROM Test: Fetches data from the Test table.
+   * WHERE test_date BETWEEN ...: Filters the tests that were done between October 1, 2023, and October 6, 2023.
+* Number of Employees who Reported Symptoms within a Date Range:
+   * SELECT COUNT(DISTINCT employee_ID) AS "Number of Employees Reported Symptoms": Counts the unique number of employees who reported symptoms within the specified date range. It ensures that even if an employee reported symptoms multiple times, they are counted only once.
+   * FROM Symptom: Fetches data from the Symptom table.
+   * WHERE date_reported BETWEEN ...: Filters the symptom reports that were made between October 1, 2023, and October 9, 2023.
+* Number of Positive Cases within a Date Range:
+   * SELECT COUNT(*) AS "Number of Positive Cases": Counts the number of positive test results within the specified date range.
+   * FROM Test: Fetches data from the Test table.
+   * WHERE test_date BETWEEN ... AND test_result = 'positive': Filters the tests that were done between October 1, 2023, and October 15, 2023, and had a result of 'positive'.
+   * Overall, these queries provide insights into the health status of employees by counting scans, tests, symptom reports, and positive cases within specific date ranges
+For question 5
+1. **List of Employees with High Temperature**:
+   - **SELECT e.ID, e.name**: Fetches the IDs and names of employees.
+   - **FROM Employee e JOIN Scan s ON e.ID = s.employee_ID**: Combines data from the `Employee` and `Scan` tables based on matching employee IDs.
+   - **WHERE s.temperature > 100.0**: Filters the results to only include employees who had a scan showing a temperature greater than 100.0.
+2. **Number of Meetings After 3 PM**:
+   - **SELECT COUNT(*) AS "Number of Meetings After 3 PM"**: Counts the number of meetings that started after 3 PM.
+   - **FROM Meeting**: Fetches data from the `Meeting` table.
+   - **WHERE meeting_start_time > 15**: Filters the meetings that started after 3 PM.
+3. **Number of Employees who are Hospitalized and Sick, but not Well**:
+   - **SELECT COUNT(DISTINCT e.ID) AS "Number of Employees who are hospitalized and sick"**: Counts the unique number of employees who have both 'hospitalized' and 'sick' status but not 'well'.
+   - **FROM Employee e JOIN HealthStatus ...**: Combines data from the `Employee` and `HealthStatus` tables to identify employees who have 'hospitalized' and 'sick' status.
+   - **WHERE NOT EXISTS ...**: Excludes employees who ever reported as 'well' during their health status updates.
+4. **Floor with the Maximum Number of Meetings**:
+   - **SELECT floor_number, COUNT(*) AS "Number of Meetings"**: Fetches the floor numbers and counts the number of meetings held on each floor.
+   - **FROM Meeting**: Fetches data from the `Meeting` table.
+   - **GROUP BY floor_number**: Groups the results by floor number.
+   - **ORDER BY "Number of Meetings" DESC FETCH FIRST 1 ROWS ONLY**: Orders the results in descending order based on the number of meetings, and then only selects the topmost row to find the floor with the maximum number of meetings.
+These queries provide specific insights into the health, activities, and patterns of the employees and the meetings held in the company.
+For question 5(extra credit)
+Let's break down the provided SQL queries:
+* Creating a View - EmployeeTestResults:
+   * A view named EmployeeTestResults is created that captures the test results of each employee.
+   * The LEFT JOIN ensures that even employees who haven't taken a test are included in the view.
+* Common Table Expressions (CTEs):
+   * RoomsWithMeetingsOnFloor5: This CTE captures all distinct room numbers on the 5th floor where meetings were actually held. This gives us a list of rooms on the 5th floor that were used for meetings.
+   * EmployeesWithSymptoms: This CTE captures the IDs of all distinct employees who have reported symptoms. This list will help in narrowing down our search to only those employees who have shown symptoms.
+* Main Query:
+   * The primary objective of this query is to identify employees aged between 25 and 29 who have reported symptoms and have had meetings in all rooms on the 5th floor where meetings were held. This is deduced from the NOT EXISTS subquery.
+   * This query works through set subtraction. In essence, the outer NOT EXISTS checks for each employee that they have a meeting in every room captured by the RoomsWithMeetingsOnFloor5 CTE. If an employee does not have a meeting in any of the rooms from RoomsWithMeetingsOnFloor5, then they will not be included in the final result.
+   * The condition e.age BETWEEN 25 AND 27 filters employees based on age.
+   * Finally, the results are ordered by employee ID.
+In simple terms, this query will fetch the list of employees aged 25 to 27, who have reported symptoms and have attended meetings in every room on the 5th floor where a meeting was held.
